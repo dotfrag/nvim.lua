@@ -10,6 +10,10 @@ return {
     -- Useful status updates for LSP.
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
     { "j-hui/fidget.nvim", opts = {} },
+
+    -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
+    -- used for completion, annotations and signatures of Neovim apis
+    { "folke/neodev.nvim", opts = {} },
   },
   config = function()
     -- Brief Aside: **What is LSP?**
@@ -56,7 +60,7 @@ return {
 
         -- Jump to the definition of the word under your cursor.
         --  This is where a variable was first declared, or where a function is defined, etc.
-        --  To jump back, press <C-T>.
+        --  To jump back, press <C-t>.
         map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
 
         -- Find references for the word under your cursor.
@@ -151,18 +155,6 @@ return {
         -- capabilities = {},
         settings = {
           Lua = {
-            runtime = { version = "LuaJIT" },
-            workspace = {
-              checkThirdParty = false,
-              -- Tells lua_ls where to find all the Lua files that you have loaded
-              -- for your neovim configuration.
-              library = {
-                "${3rd}/luv/library",
-                unpack(vim.api.nvim_get_runtime_file("", true)),
-              },
-              -- If lua_ls is really slow on your computer, you can try this instead:
-              -- library = { vim.env.VIMRUNTIME },
-            },
             completion = {
               callSnippet = "Replace",
             },
