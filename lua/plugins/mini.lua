@@ -8,7 +8,6 @@ return {
     --  - va)  - [V]isually select [A]round [)]paren
     --  - yinq - [Y]ank [I]nside [N]ext [']quote
     --  - ci'  - [C]hange [I]nside [']quote
-
     local ai = require("mini.ai")
     require("mini.ai").setup({
       n_lines = 500,
@@ -50,6 +49,7 @@ return {
     -- - sr)'  - [S]urround [R]eplace [)] [']
     require("mini.surround").setup()
 
+    -- Align text interactively (ga, gA)
     require("mini.align").setup()
 
     -- Simple and easy statusline.
